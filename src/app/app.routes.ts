@@ -4,8 +4,6 @@ import { Home } from './pages/home/home';
 import { Projects } from './pages/projects/projects';
 import { ProjectDetail } from './pages/project-detail/project-detail';
 import { Notes } from './pages/notes/notes';
-import { About } from './pages/about/about';
-import { Contact } from './pages/contact/contact';
 
 export const routes: Routes = [
   {
@@ -26,16 +24,6 @@ export const routes: Routes = [
     path: 'notes',
     component: Notes,
     title: 'Engineering Notes | Artur Marbach',
-  },
-  {
-    path: 'about',
-    component: About,
-    title: 'About | Artur Marbach',
-  },
-  {
-    path: 'contact',
-    component: Contact,
-    title: 'Contact | Artur Marbach',
   },
   {
     path: '**',

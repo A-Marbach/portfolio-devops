@@ -1,0 +1,270 @@
+<section class="hero">
+  <div class="container hero__inner">
+
+    <!-- =========================
+         INTRO
+    ========================== -->
+
+    <div class="hero__intro">
+
+      <span class="hero__eyebrow">
+        Junior DevOps Engineer
+      </span>
+
+      <h1>
+        Artur Marbach.
+      </h1>
+
+      <h2>
+        I automate infrastructure
+        <span>from provisioning to operations.</span>
+      </h2>
+
+      <p class="hero__description">
+        I work with Linux, AWS, Terraform, Ansible, Docker and Kubernetes
+        to build reproducible infrastructure and automated deployment workflows.
+      </p>
+
+      <a
+        href="https://github.com/A-Marbach"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hero__github"
+      >
+        GitHub
+      </a>
+
+    </div>
+
+
+    <!-- =========================
+         DESKTOP WORKFLOW
+    ========================== -->
+
+    <div class="delivery delivery--desktop">
+
+      <div class="delivery__header">
+
+        <div>
+          <span class="delivery__label">
+            Infrastructure Delivery
+          </span>
+
+          <span class="delivery__environment">
+            provision → configure → deploy → operate
+          </span>
+        </div>
+
+        <div
+          class="delivery__status"
+          [class.delivery__status--ready]="finished()"
+        >
+          <span class="delivery__status-dot"></span>
+
+          @if (finished()) {
+            Ready
+          } @else {
+            Building
+          }
+        </div>
+
+      </div>
+
+
+      <div class="delivery__flow">
+
+        @for (
+          phase of flow;
+          track phase.title;
+          let phaseIndex = $index
+        ) {
+
+          <div
+            class="delivery-phase"
+            [class.delivery-phase--active]="isPhaseActive(phaseIndex)"
+            [class.delivery-phase--done]="isPhaseDone(phaseIndex)"
+          >
+
+            <div class="delivery-phase__marker">
+
+              @if (isPhaseDone(phaseIndex)) {
+                <span class="delivery-phase__check">
+                  ✓
+                </span>
+              } @else {
+                <span class="delivery-phase__dot"></span>
+              }
+
+            </div>
+
+
+            <div class="delivery-phase__content">
+
+              <div class="delivery-phase__heading">
+
+                <div>
+                  <span class="delivery-phase__number">
+                    0{{ phaseIndex + 1 }}
+                  </span>
+
+                  <h3>
+                    {{ phase.title }}
+                  </h3>
+                </div>
+
+                <span class="delivery-phase__state">
+
+                  @if (isPhaseDone(phaseIndex)) {
+                    complete
+                  } @else if (isPhaseActive(phaseIndex)) {
+                    running
+                  } @else {
+                    waiting
+                  }
+
+                </span>
+
+              </div>
+
+              <span class="delivery-phase__subtitle">
+                {{ phase.subtitle }}
+              </span>
+
+
+              <div class="delivery-phase__items">
+
+                @for (
+                  item of phase.items;
+                  track item;
+                  let itemIndex = $index
+                ) {
+
+                  <span
+                    class="delivery-item"
+                    [class.delivery-item--visible]="
+                      isItemVisible(
+                        phaseIndex,
+                        itemIndex
+                      )
+                    "
+                  >
+                    {{ item }}
+                  </span>
+
+                }
+
+              </div>
+
+            </div>
+
+          </div>
+
+        }
+
+      </div>
+
+
+      <div
+        class="delivery__footer"
+        [class.delivery__footer--visible]="finished()"
+      >
+        <span class="delivery__footer-dot"></span>
+
+        Infrastructure lifecycle ready
+      </div>
+
+    </div>
+
+
+    <!-- =========================
+         MOBILE WORKFLOW
+    ========================== -->
+
+    <div class="mobile-workflow">
+
+      <div class="mobile-workflow__header">
+
+        <span>
+          Infrastructure Delivery
+        </span>
+
+        <div
+          class="mobile-workflow__status"
+          [class.mobile-workflow__status--ready]="finished()"
+        >
+          <span></span>
+
+          @if (finished()) {
+            Ready
+          } @else {
+            Building
+          }
+        </div>
+
+      </div>
+
+
+      <div class="mobile-workflow__steps">
+
+        @for (
+          phase of flow;
+          track phase.title;
+          let phaseIndex = $index
+        ) {
+
+          <div
+            class="mobile-step"
+            [class.mobile-step--active]="isPhaseActive(phaseIndex)"
+            [class.mobile-step--done]="isPhaseDone(phaseIndex)"
+          >
+
+            <div class="mobile-step__indicator">
+
+              @if (isPhaseDone(phaseIndex)) {
+                ✓
+              } @else {
+                <span></span>
+              }
+
+            </div>
+
+            <span class="mobile-step__number">
+              0{{ phaseIndex + 1 }}
+            </span>
+
+            <strong>
+              {{ phase.title }}
+            </strong>
+
+            <span class="mobile-step__state">
+
+              @if (isPhaseDone(phaseIndex)) {
+                complete
+              } @else if (isPhaseActive(phaseIndex)) {
+                running
+              } @else {
+                waiting
+              }
+
+            </span>
+
+          </div>
+
+        }
+
+      </div>
+
+
+      <div
+        class="mobile-workflow__footer"
+        [class.mobile-workflow__footer--visible]="finished()"
+      >
+        <span></span>
+
+        Infrastructure ready
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,170 @@
+<section class="skills">
+  <div class="container">
+
+    <div class="skills__header">
+      <span class="section-label">Skills</span>
+
+      <h2>Technical Stack</h2>
+
+      <p>
+        Core technologies I use across Linux, cloud infrastructure,
+        automation, containers and CI/CD.
+      </p>
+    </div>
+
+
+    <!-- DESKTOP / TABLET GRID -->
+
+    <div class="skills__grid">
+      @for (skill of skills; track skill.title) {
+
+        <article class="skill-card">
+
+          <div class="skill-card__inner">
+
+            <!-- FRONT -->
+
+            <div class="skill-card__front">
+
+              <span class="skill-card__category">
+                {{ skill.category }}
+              </span>
+
+              <div class="skill-card__icon">
+                <img
+                  [src]="skill.img"
+                  [alt]="skill.title"
+                >
+              </div>
+
+              <h3>
+                {{ skill.title }}
+              </h3>
+
+              <span class="skill-card__hint">
+                View experience →
+              </span>
+
+            </div>
+
+
+            <!-- BACK -->
+
+            <div class="skill-card__back">
+
+              <span class="skill-card__category">
+                {{ skill.category }}
+              </span>
+
+              <h3>
+                {{ skill.title }}
+              </h3>
+
+              <ul>
+                @for (
+                  point of skill.description;
+                  track point
+                ) {
+                  <li>{{ point }}</li>
+                }
+              </ul>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      }
+    </div>
+
+
+    <!-- MOBILE CAROUSEL -->
+
+    <div class="skills-mobile">
+
+      <div
+        #mobileRow
+        class="skills-mobile__row"
+        (scroll)="onMobileScroll($event)"
+      >
+
+        @for (
+          page of skillPages;
+          track $index
+        ) {
+
+          <div class="skills-mobile__page">
+
+            @for (
+              skill of page;
+              track skill.title
+            ) {
+
+              <article class="mobile-skill">
+
+                <div class="mobile-skill__icon">
+                  <img
+                    [src]="skill.img"
+                    [alt]="skill.title"
+                  >
+                </div>
+
+                <div class="mobile-skill__content">
+
+                  <span class="mobile-skill__category">
+                    {{ skill.category }}
+                  </span>
+
+                  <h3>
+                    {{ skill.title }}
+                  </h3>
+
+                  <ul>
+                    @for (
+                      point of skill.description;
+                      track point
+                    ) {
+                      <li>{{ point }}</li>
+                    }
+                  </ul>
+
+                </div>
+
+              </article>
+
+            }
+
+          </div>
+
+        }
+
+      </div>
+
+
+      <!-- DOTS -->
+
+      <div class="skills-mobile__dots">
+
+        @for (
+          page of skillPages;
+          track $index;
+          let i = $index
+        ) {
+
+          <button
+            type="button"
+            class="skills-mobile__dot"
+            [class.skills-mobile__dot--active]="activePage === i"
+            (click)="scrollToPage(i)"
+            [attr.aria-label]="'Show skills page ' + (i + 1)"
+          ></button>
+
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

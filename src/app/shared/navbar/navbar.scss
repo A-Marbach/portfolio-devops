@@ -4,6 +4,7 @@
   z-index: 1000;
 
   background: rgba(11, 15, 20, 0.82);
+
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
@@ -20,6 +21,7 @@
   gap: 32px;
 }
 
+
 /* =========================
    BRAND
 ========================= */
@@ -27,6 +29,7 @@
 .brand {
   display: flex;
   align-items: center;
+
   gap: 13px;
 
   flex-shrink: 0;
@@ -58,18 +61,22 @@
 
 .brand:hover .brand__mark {
   border-color: var(--accent);
+
   background: var(--accent-soft);
+
   transform: translateY(-1px);
 }
 
 .brand__text {
   display: flex;
   flex-direction: column;
+
   line-height: 1.2;
 }
 
 .brand__name {
   color: var(--text);
+
   font-size: 0.95rem;
   font-weight: 650;
 }
@@ -86,6 +93,7 @@
   text-transform: uppercase;
 }
 
+
 /* =========================
    NAVIGATION
 ========================= */
@@ -93,7 +101,6 @@
 .nav {
   display: flex;
   align-items: center;
-  justify-content: center;
 
   gap: 6px;
 
@@ -119,6 +126,7 @@
 
 .nav a:hover {
   color: var(--text);
+
   background: rgba(255, 255, 255, 0.035);
 }
 
@@ -126,6 +134,7 @@
   content: '';
 
   position: absolute;
+
   left: 13px;
   right: 13px;
   bottom: 5px;
@@ -148,6 +157,7 @@
   transform: scaleX(1);
 }
 
+
 /* =========================
    ACTIONS
 ========================= */
@@ -155,16 +165,21 @@
 .navbar__actions {
   display: flex;
   align-items: center;
+
   gap: 10px;
 
   flex-shrink: 0;
 }
+
+
+/* GITHUB */
 
 .github {
   height: 40px;
 
   display: flex;
   align-items: center;
+
   gap: 8px;
 
   padding: 0 13px;
@@ -189,44 +204,16 @@
 }
 
 .github:hover {
-  color: var(--text);
-  border-color: var(--border-hover);
-  background: var(--surface);
+  color: #7dd3fc;
+
+  border-color: rgba(56, 189, 248, 0.4);
+
+  background: rgba(56, 189, 248, 0.05);
 }
 
-.contact-button {
-  height: 40px;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 0 16px;
-
-  border-radius: 8px;
-
-  background: var(--text);
-  color: var(--bg);
-
-  font-size: 0.84rem;
-  font-weight: 650;
-
-  transition:
-    transform 160ms ease,
-    opacity 160ms ease;
-}
-
-.contact-button:hover {
-  transform: translateY(-1px);
-  opacity: 0.9;
-}
-
-.contact-button span {
-  font-size: 1rem;
-}
 
 /* =========================
-   MOBILE BUTTON
+   MOBILE MENU BUTTON
 ========================= */
 
 .menu-button {
@@ -234,6 +221,7 @@
   height: 42px;
 
   display: none;
+
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -271,6 +259,7 @@
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
+
 /* =========================
    MOBILE NAVIGATION
 ========================= */
@@ -279,6 +268,7 @@
   display: none;
 
   max-height: 0;
+
   overflow: hidden;
 
   background: var(--bg);
@@ -291,7 +281,8 @@
 }
 
 .mobile-nav--open {
-  max-height: 500px;
+  max-height: 300px;
+
   border-color: var(--border);
 }
 
@@ -299,13 +290,14 @@
   display: flex;
   flex-direction: column;
 
-  padding-top: 16px;
-  padding-bottom: 24px;
+  padding-top: 12px;
+  padding-bottom: 20px;
 }
 
 .mobile-nav a {
   display: flex;
   align-items: center;
+
   gap: 14px;
 
   padding: 14px 4px;
@@ -314,15 +306,23 @@
 
   color: var(--text-secondary);
 
-  font-size: 1rem;
+  font-size: 0.95rem;
+
+  transition: color 160ms ease;
+}
+
+.mobile-nav a:last-child {
+  border-bottom: 0;
 }
 
 .mobile-nav a span {
   color: var(--text-muted);
 
-  font-size: 0.67rem;
+  font-family:
+    "JetBrains Mono",
+    monospace;
 
-  font-family: monospace;
+  font-size: 0.62rem;
 }
 
 .mobile-nav a.active,
@@ -330,8 +330,9 @@
   color: var(--text);
 }
 
+
 /* =========================
-   RESPONSIVE
+   TABLET
 ========================= */
 
 @media (max-width: 1050px) {
@@ -348,19 +349,26 @@
   }
 }
 
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 850px) {
   .nav {
     display: none;
   }
 
-  .github span {
-    display: none;
-  }
-
   .github {
     width: 40px;
+
     padding: 0;
+
     justify-content: center;
+  }
+
+  .github span {
+    display: none;
   }
 
   .menu-button {
@@ -371,6 +379,7 @@
     display: block;
   }
 }
+
 
 @media (max-width: 550px) {
   .navbar__inner {
@@ -386,7 +395,13 @@
     display: none;
   }
 
-  .contact-button {
-    display: none;
+  .github {
+    width: 38px;
+    height: 38px;
+  }
+
+  .menu-button {
+    width: 38px;
+    height: 38px;
   }
 }

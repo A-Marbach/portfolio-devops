@@ -1,91 +1,207 @@
-<section class="projects">
+<section class="projects-showcase">
   <div class="container">
 
-    <div class="projects__header">
-      <div>
-        <span class="section-label">Selected Work</span>
-        <h2>Projects</h2>
-      </div>
+    <div class="projects-showcase__header">
+      <span class="section-label">
+        Selected Work
+      </span>
 
-      <a routerLink="/projects" class="all-projects">
-        View all projects →
-      </a>
+      <h2>
+        Projects
+      </h2>
+
+      <p class="projects-showcase__intro">
+        A selection of infrastructure and DevOps projects focused on cloud
+        platforms, automation, containerization and reliable deployments.
+      </p>
     </div>
 
-    <!-- FEATURED PROJECT -->
-    <article class="featured">
 
-      <div class="featured__image">
-        <img
-          src="/assets/vikunja-aws-img.png"
-          alt="Vikunja AWS infrastructure project"
+    <!-- =========================
+         PROJECT TABS
+    ========================== -->
+
+    <div class="project-tabs">
+
+      @for (
+        project of projects;
+        track project.slug;
+        let i = $index
+      ) {
+
+        <button
+          type="button"
+          class="project-tab"
+          [class.project-tab--active]="i === currentIndex"
+          (click)="selectProject(i)"
         >
+
+          <span class="project-tab__number">
+            0{{ i + 1 }}
+          </span>
+
+          <span class="project-tab__title">
+            {{ project.shortTitle }}
+          </span>
+
+        </button>
+
+      }
+
+    </div>
+
+
+    <!-- =========================
+         PROJECT START
+    ========================== -->
+
+    <div
+      #showcaseStart
+      class="showcase-anchor"
+    ></div>
+
+
+    <!-- =========================
+         PROJECT
+    ========================== -->
+
+    <article class="showcase">
+
+      <div class="showcase__image">
+
+        <img
+          [src]="currentProject.image"
+          [alt]="currentProject.title"
+        >
+
       </div>
 
-      <div class="featured__content">
 
-        <div class="project-meta">
-          <span>{{ projects[0].number }}</span>
-          <span>Featured Case Study</span>
-        </div>
+      <div class="showcase__content">
 
-        <h3>{{ projects[0].title }}</h3>
+        <span class="showcase__label">
+          Case Study
+        </span>
 
-        <p>
-          {{ projects[0].description }}
+        <h3>
+          {{ currentProject.title }}
+        </h3>
+
+        <p class="showcase__description">
+          {{ currentProject.description }}
         </p>
 
-        <div class="tags">
-          @for (tech of projects[0].technologies; track tech) {
-            <span>{{ tech }}</span>
+
+        <ul class="showcase__highlights">
+
+          @for (
+            highlight of currentProject.highlights;
+            track highlight
+          ) {
+
+            <li>
+              {{ highlight }}
+            </li>
+
           }
+
+        </ul>
+
+
+        <div class="tags">
+
+          @for (
+            tech of currentProject.technologies;
+            track tech
+          ) {
+
+            <span>
+              {{ tech }}
+            </span>
+
+          }
+
         </div>
 
-        <a
-          [routerLink]="['/projects', projects[0].slug]"
-          class="project-link"
-        >
-          View Case Study →
-        </a>
+
+        <!-- ACTIONS -->
+
+        <div class="project-actions">
+
+          <a
+            [routerLink]="[
+              '/projects',
+              currentProject.slug
+            ]"
+            class="project-button project-button--primary"
+          >
+            View Case Study
+          </a>
+
+
+          <a
+            [href]="currentProject.github"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-button project-button--secondary"
+          >
+            GitHub Repository
+          </a>
+
+        </div>
 
       </div>
 
     </article>
 
-    <!-- OTHER PROJECTS -->
-    <div class="projects__grid">
 
-      @for (project of projects.slice(1); track project.slug) {
+    <!-- =========================
+         PROJECT NAVIGATION
+    ========================== -->
 
-        <article class="project-card">
+    <div class="project-navigation">
 
-          <div class="project-card__top">
-            <span>{{ project.number }}</span>
-            <span>Case Study</span>
-          </div>
+      <button
+        type="button"
+        class="project-navigation__button"
+        [disabled]="!hasPreviousProject"
+        (click)="previousProject()"
+      >
+        <span class="project-navigation__direction">
+          Previous Project
+        </span>
 
-          <h3>{{ project.title }}</h3>
+        @if (hasPreviousProject) {
+          <strong>
+            {{ projects[currentIndex - 1].shortTitle }}
+          </strong>
+        }
+      </button>
 
-          <p>
-            {{ project.description }}
-          </p>
 
-          <div class="tags">
-            @for (tech of project.technologies; track tech) {
-              <span>{{ tech }}</span>
-            }
-          </div>
+      <div class="project-navigation__count">
+        0{{ currentIndex + 1 }}
+        <span>/</span>
+        0{{ projects.length }}
+      </div>
 
-          <a
-            [routerLink]="['/projects', project.slug]"
-            class="project-link"
-          >
-            View Project →
-          </a>
 
-        </article>
+      <button
+        type="button"
+        class="project-navigation__button project-navigation__button--next"
+        [disabled]="!hasNextProject"
+        (click)="nextProject()"
+      >
+        <span class="project-navigation__direction">
+          Next Project
+        </span>
 
-      }
+        @if (hasNextProject) {
+          <strong>
+            {{ projects[currentIndex + 1].shortTitle }}
+          </strong>
+        }
+      </button>
 
     </div>
 

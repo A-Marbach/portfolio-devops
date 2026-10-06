@@ -1,0 +1,165 @@
+.contact {
+  padding: 120px 0;
+
+  border-top: 1px solid var(--border);
+}
+
+.contact__inner {
+  max-width: 900px;
+}
+
+
+/* ==============================
+   LABEL
+============================== */
+
+.section-label {
+  color: var(--text-muted);
+
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+
+/* ==============================
+   HEADLINE
+============================== */
+
+.contact h2 {
+  margin-top: 10px;
+
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  line-height: 0.98;
+
+  letter-spacing: -0.05em;
+}
+
+.contact h2 span {
+  display: block;
+
+  color: var(--text-muted);
+}
+
+
+/* ==============================
+   TEXT
+============================== */
+
+.contact p {
+  max-width: 650px;
+
+  margin-top: 28px;
+
+  color: var(--text-secondary);
+
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+
+/* ==============================
+   EMAIL
+============================== */
+
+.contact__mail {
+  display: inline-block;
+
+  margin-top: 40px;
+
+  padding-bottom: 5px;
+
+  border-bottom: 1px solid var(--border-hover);
+
+  color: var(--text);
+
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 500;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.contact__mail:hover {
+  color: #7dd3fc;
+
+  border-color: rgba(56, 189, 248, 0.55);
+}
+
+
+/* ==============================
+   GITHUB BUTTON
+============================== */
+
+.contact__github {
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 28px;
+
+  padding: 10px 17px;
+
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 7px;
+
+  background: rgba(56, 189, 248, 0.05);
+
+  color: #7dd3fc;
+
+  font-size: 0.86rem;
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.contact__github:hover {
+  background: rgba(56, 189, 248, 0.1);
+
+  border-color: rgba(56, 189, 248, 0.55);
+
+  transform: translateY(-1px);
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 600px) {
+  .contact {
+    padding: 80px 0;
+  }
+
+  .contact h2 {
+    font-size: 2.6rem;
+  }
+
+  .contact p {
+    margin-top: 22px;
+
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .contact__mail {
+    margin-top: 32px;
+
+    font-size: 1.05rem;
+  }
+
+  .contact__github {
+    margin-top: 24px;
+
+    padding: 9px 16px;
+
+    font-size: 0.78rem;
+  }
+}
