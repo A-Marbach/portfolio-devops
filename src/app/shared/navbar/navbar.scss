@@ -273,6 +273,11 @@
 .mobile-nav {
   display: none;
 
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+
   max-height: 0;
 
   overflow: hidden;
@@ -280,6 +285,7 @@
   background: var(--bg);
 
   border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 
   transition:
     max-height 250ms ease,
@@ -289,7 +295,8 @@
 .mobile-nav--open {
   max-height: 300px;
 
-  border-color: var(--border);
+  border-top-color: var(--border);
+  border-bottom-color: var(--border);
 }
 
 .mobile-nav__inner {
@@ -351,6 +358,10 @@
 ========================= */
 
 @media (max-width: 850px) {
+  .navbar {
+    position: sticky;
+  }
+
   .nav {
     display: none;
   }
@@ -376,6 +387,10 @@
   }
 }
 
+
+/* =========================
+   SMALL MOBILE
+========================= */
 
 @media (max-width: 550px) {
   .navbar__inner {

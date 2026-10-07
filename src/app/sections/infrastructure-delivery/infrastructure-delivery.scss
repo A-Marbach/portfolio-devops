@@ -1,0 +1,449 @@
+.delivery-section {
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+}
+
+.delivery-section__header {
+  max-width: 720px;
+  margin: 0 auto 42px;
+
+  text-align: center;
+}
+
+.section-label {
+  color: var(--text-muted);
+
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.delivery-section__header h2 {
+  margin-top: 8px;
+
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.delivery-section__header h2 span {
+  display: block;
+
+  color: var(--text-muted);
+}
+
+.delivery-section__header p {
+  max-width: 650px;
+
+  margin: 18px auto 0;
+
+  color: var(--text-secondary);
+
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+
+/* ==============================
+   DELIVERY
+============================== */
+
+.delivery {
+  width: 100%;
+  max-width: 900px;
+
+  margin-inline: auto;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.012);
+}
+
+.delivery__header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 20px 22px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.delivery__header > div:first-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.delivery__label {
+  color: var(--text-secondary);
+
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.delivery__environment {
+  color: var(--text-muted);
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    monospace;
+
+  font-size: 0.62rem;
+}
+
+.delivery__status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: var(--accent);
+
+  font-size: 0.68rem;
+}
+
+.delivery__status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+}
+
+.delivery__status--ready {
+  color: #5fd38d;
+}
+
+.delivery__status--ready .delivery__status-dot {
+  background: #5fd38d;
+}
+
+
+/* ==============================
+   FLOW
+============================== */
+
+.delivery__flow {
+  padding: 8px 22px 12px;
+}
+
+.delivery-phase {
+  display: grid;
+
+  grid-template-columns:
+    26px
+    minmax(0, 1fr);
+
+  gap: 12px;
+
+  padding: 17px 0;
+
+  border-bottom: 1px solid var(--border);
+
+  opacity: 0.4;
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.delivery-phase:last-child {
+  border-bottom: 0;
+}
+
+.delivery-phase--active,
+.delivery-phase--done {
+  opacity: 1;
+}
+
+.delivery-phase--active {
+  transform: translateX(3px);
+}
+
+
+/* MARKER */
+
+.delivery-phase__marker {
+  display: flex;
+
+  justify-content: center;
+
+  padding-top: 6px;
+}
+
+.delivery-phase__dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: var(--text-muted);
+}
+
+.delivery-phase--active .delivery-phase__dot {
+  background: var(--accent);
+}
+
+.delivery-phase__check {
+  color: #5fd38d;
+
+  font-size: 0.8rem;
+}
+
+
+/* CONTENT */
+
+.delivery-phase__heading {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+.delivery-phase__heading > div {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.delivery-phase__number {
+  color: var(--text-muted);
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    monospace;
+
+  font-size: 0.58rem;
+}
+
+.delivery-phase h3 {
+  color: var(--text);
+
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.delivery-phase__state {
+  color: var(--text-muted);
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    monospace;
+
+  font-size: 0.54rem;
+}
+
+.delivery-phase--active .delivery-phase__state {
+  color: var(--accent);
+}
+
+.delivery-phase--done .delivery-phase__state {
+  color: #5fd38d;
+}
+
+.delivery-phase__subtitle {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--text-muted);
+
+  font-size: 0.64rem;
+}
+
+
+/* ITEMS */
+
+.delivery-phase__items {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-top: 10px;
+}
+
+.delivery-item {
+  padding: 5px 8px;
+
+  border: 1px solid var(--border);
+  border-radius: 5px;
+
+  background: var(--bg);
+
+  color: var(--text-muted);
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    monospace;
+
+  font-size: 0.57rem;
+
+  opacity: 0;
+
+  transform: translateY(5px);
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.delivery-item--visible {
+  opacity: 1;
+
+  transform: translateY(0);
+
+  color: var(--text-secondary);
+
+  border-color: var(--border-hover);
+}
+
+
+/* FOOTER */
+
+.delivery__footer {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 15px 22px;
+
+  border-top: 1px solid var(--border);
+
+  color: var(--text-secondary);
+
+  font-size: 0.68rem;
+
+  opacity: 0;
+
+  transition: opacity 0.6s ease;
+}
+
+.delivery__footer--visible {
+  opacity: 1;
+}
+
+.delivery__footer-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #5fd38d;
+}
+
+
+/* ==============================
+   TABLET
+============================== */
+
+@media (max-width: 900px) {
+  .delivery-section {
+    padding: 80px 0;
+  }
+
+  .delivery-section__header {
+    max-width: 680px;
+  }
+
+  .delivery {
+    max-width: 720px;
+  }
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 600px) {
+  .delivery-section {
+    padding: 68px 0;
+  }
+
+  .delivery-section__header {
+    max-width: none;
+
+    margin-bottom: 30px;
+
+    text-align: left;
+  }
+
+  .delivery-section__header p {
+    margin-top: 14px;
+
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .delivery-section__header h2 {
+    font-size: 2rem;
+  }
+
+  .delivery {
+    max-width: none;
+  }
+
+  .delivery__header {
+    padding: 14px 15px;
+  }
+
+  .delivery__environment {
+    display: none;
+  }
+
+  .delivery__flow {
+    padding: 5px 15px;
+  }
+
+  .delivery-phase {
+    grid-template-columns:
+      20px
+      minmax(0, 1fr);
+
+    gap: 8px;
+
+    padding: 13px 0;
+  }
+
+  .delivery-phase__items {
+    gap: 5px;
+
+    margin-top: 8px;
+  }
+
+  .delivery-item {
+    padding: 4px 6px;
+
+    font-size: 0.5rem;
+  }
+
+  .delivery__footer {
+    padding: 11px 15px;
+  }
+}

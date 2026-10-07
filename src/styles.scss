@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 :root {
   --bg: #0b0f14;
   --bg-secondary: #10161f;
@@ -33,7 +34,7 @@ html {
   scroll-behavior: smooth;
 }
 
-section {
+section[id] {
   scroll-margin-top: 90px;
 }
 
@@ -41,12 +42,14 @@ body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--text);
+
   font-family:
     Inter,
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
     sans-serif;
+
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -70,4 +73,10 @@ img {
 .container {
   width: min(calc(100% - 40px), var(--max-width));
   margin-inline: auto;
+}
+
+@media (max-width: 550px) {
+  section[id] {
+    scroll-margin-top: 78px;
+  }
 }

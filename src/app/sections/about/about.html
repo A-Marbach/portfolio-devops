@@ -1,18 +1,155 @@
-<section id="about" class="about">
+<section
+  #aboutSection
+  id="about"
+  class="about"
+  [class.about--started]="started()"
+>
   <div class="container about__inner">
 
-    <div class="about__visual">
-      <div class="about__image-wrapper">
-        <img
-          src="/assets/profile.png"
-          alt="Artur Marbach"
-          class="about__image"
+    <div class="about__journey">
+
+      <div class="journey journey--desktop">
+        <svg
+          class="journey__line"
+          viewBox="0 0 600 520"
+          preserveAspectRatio="none"
+          aria-hidden="true"
         >
+          <path
+            class="journey__track"
+            pathLength="1"
+            d="
+              M 105 75
+              L 105 165
+              Q 105 195 135 195
+              L 465 195
+              Q 495 195 495 225
+              L 495 295
+              Q 495 325 465 325
+              L 135 325
+              Q 105 325 105 355
+              L 105 445
+            "
+          />
+
+          <path
+            class="journey__progress"
+            pathLength="1"
+            d="
+              M 105 75
+              L 105 165
+              Q 105 195 135 195
+              L 465 195
+              Q 495 195 495 225
+              L 495 295
+              Q 495 325 465 325
+              L 135 325
+              Q 105 325 105 355
+              L 105 445
+            "
+          />
+        </svg>
+
+        <span class="journey__dot journey__dot--one"></span>
+        <span class="journey__dot journey__dot--two"></span>
+        <span class="journey__dot journey__dot--three"></span>
+
+        <article class="journey__stage journey__stage--one">
+          <span class="journey__type">Operations</span>
+
+          <h3>Team Lead</h3>
+
+          <p>
+            Team responsibility, process coordination
+            and reliable daily operations.
+          </p>
+        </article>
+
+        <article class="journey__stage journey__stage--two">
+          <span class="journey__type">Development</span>
+
+          <h3>Frontend</h3>
+
+          <p>
+            Angular, TypeScript and collaborative
+            application development.
+          </p>
+        </article>
+
+        <article class="journey__stage journey__stage--three">
+          <span class="journey__type">Current Focus</span>
+
+          <h3>Cloud & DevOps</h3>
+
+          <p>
+            Linux, AWS, Terraform, Ansible,
+            containers and automation.
+          </p>
+        </article>
       </div>
+
+
+      <div class="journey-mobile">
+
+        <div class="journey-mobile__rail">
+          <span class="journey-mobile__track"></span>
+          <span class="journey-mobile__progress"></span>
+        </div>
+
+        <article class="journey-mobile__stage journey-mobile__stage--one">
+          <span class="journey-mobile__dot"></span>
+
+          <div>
+            <span class="journey__type">Operations</span>
+
+            <h3>Team Lead</h3>
+
+            <p>
+              Team responsibility, process coordination
+              and reliable daily operations.
+            </p>
+          </div>
+        </article>
+
+        <article class="journey-mobile__stage journey-mobile__stage--two">
+          <span class="journey-mobile__dot"></span>
+
+          <div>
+            <span class="journey__type">Development</span>
+
+            <h3>Frontend</h3>
+
+            <p>
+              Angular, TypeScript and collaborative
+              application development.
+            </p>
+          </div>
+        </article>
+
+        <article class="journey-mobile__stage journey-mobile__stage--three">
+          <span class="journey-mobile__dot"></span>
+
+          <div>
+            <span class="journey__type">Current Focus</span>
+
+            <h3>Cloud & DevOps</h3>
+
+            <p>
+              Linux, AWS, Terraform, Ansible,
+              containers and automation.
+            </p>
+          </div>
+        </article>
+
+      </div>
+
     </div>
 
+
     <div class="about__content">
-      <span class="section-label">About Me</span>
+      <span class="section-label">
+        About Me
+      </span>
 
       <h2>
         From operations to
@@ -20,29 +157,25 @@
       </h2>
 
       <p class="about__lead">
-        My background combines operational leadership, software development
-        and infrastructure engineering.
+        My background combines operational leadership,
+        software development and infrastructure engineering.
       </p>
 
       <p>
-        Before moving into IT, I worked for several years as a team lead in
-        courier operations, coordinating daily processes and taking
-        responsibility for a team.
+        I spent several years leading courier operations,
+        coordinating daily processes and taking responsibility
+        for a team.
       </p>
 
       <p>
-        I later transitioned into software development, where I gained
-        experience with frontend development and collaborative team projects.
-        During that time, I became increasingly interested in the systems
-        behind applications: Linux, deployments, infrastructure and
-        automation.
+        I later moved into software development and became
+        increasingly interested in Linux, deployments,
+        infrastructure and automation.
       </p>
 
       <p>
-        Today, I focus on DevOps and cloud infrastructure, building practical
-        projects with AWS, Terraform, Ansible, Docker and Kubernetes.
-        My goal is to create infrastructure that is reproducible, automated
-        and reliable.
+        Today, I focus on DevOps and cloud infrastructure
+        with AWS, Terraform, Ansible, Docker and Kubernetes.
       </p>
     </div>
 
