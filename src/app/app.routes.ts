@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 import { Home } from './pages/home/home';
 import { ProjectDetail } from './pages/project-detail/project-detail';
-import { Notes } from './pages/notes/notes';
+import { LegalNotice } from './pages/legal-notice/legal-notice';
 
 export const routes: Routes = [
   {
@@ -15,9 +15,9 @@ export const routes: Routes = [
     component: ProjectDetail,
   },
   {
-    path: 'notes',
-    component: Notes,
-    title: 'Engineering Notes | Artur Marbach',
+    path: 'legal-notice',
+    component: LegalNotice,
+    title: 'Legal Notice | Artur Marbach',
   },
   {
     path: '**',

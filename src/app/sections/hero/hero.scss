@@ -31,9 +31,10 @@
 .hero__eyebrow {
   display: inline-block;
 
-  color: var(--text-muted);
+  color: var(--accent);
 
   font-size: 0.75rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
 
   text-transform: uppercase;
@@ -81,7 +82,7 @@
 
 
 /* ==============================
-   GITHUB
+   GITHUB BUTTON
 ============================== */
 
 .hero__github {
@@ -90,30 +91,38 @@
   align-items: center;
   justify-content: center;
 
+  gap: 8px;
+
   margin-top: 30px;
 
-  padding: 10px 16px;
+  min-height: 46px;
+  padding: 0 18px;
 
-  border: 1px solid rgba(56, 189, 248, 0.28);
-  border-radius: 7px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
 
-  background: rgba(56, 189, 248, 0.05);
+  background: rgba(255, 255, 255, 0.018);
 
-  color: #7dd3fc;
+  color: var(--text);
 
-  font-size: 0.88rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  text-decoration: none;
 
   transition:
-    background 0.2s ease,
     border-color 0.2s ease,
-    transform 0.2s ease;
+    background 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .hero__github:hover {
-  background: rgba(56, 189, 248, 0.1);
+  border-color: var(--accent);
 
-  border-color: rgba(56, 189, 248, 0.55);
+  background: rgba(255, 255, 255, 0.035);
+
+  color: var(--accent);
 
   transform: translateY(-1px);
 }
@@ -129,7 +138,7 @@
   border: 1px solid var(--border);
   border-radius: 14px;
 
-  background: var(--bg-secondary);
+  background: rgba(255, 255, 255, 0.012);
 }
 
 
@@ -185,7 +194,7 @@
 
   gap: 7px;
 
-  color: #d2a85a;
+  color: var(--accent);
 
   font-size: 0.68rem;
 }
@@ -196,7 +205,7 @@
 
   border-radius: 50%;
 
-  background: #d2a85a;
+  background: var(--accent);
 }
 
 .delivery__status--ready {
@@ -244,7 +253,7 @@
 }
 
 .delivery-phase--active {
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
 
 
@@ -268,7 +277,7 @@
 }
 
 .delivery-phase--active .delivery-phase__dot {
-  background: #d2a85a;
+  background: var(--accent);
 }
 
 .delivery-phase__check {
@@ -327,7 +336,7 @@
 }
 
 .delivery-phase--active .delivery-phase__state {
-  color: #d2a85a;
+  color: var(--accent);
 }
 
 .delivery-phase--done .delivery-phase__state {
@@ -380,7 +389,9 @@
 
   transition:
     opacity 0.45s ease,
-    transform 0.45s ease;
+    transform 0.45s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .delivery-item--visible {
@@ -391,6 +402,12 @@
   color: var(--text-secondary);
 
   border-color: var(--border-hover);
+}
+
+.delivery-item--visible:hover {
+  border-color: var(--accent);
+
+  color: var(--text);
 }
 
 
@@ -440,63 +457,229 @@
 
 
 /* ==============================
-   TABLET
+   SMALL DESKTOP / TABLET
 ============================== */
 
-@media (max-width: 1000px) {
+@media (max-width: 1000px) and (min-width: 761px) {
   .hero {
-    min-height: auto;
+    min-height: calc(100vh - 78px);
 
-    padding: 70px 0;
+    padding: 36px 0;
   }
 
   .hero__inner {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(330px, 0.9fr);
 
-    gap: 45px;
+    gap: 42px;
   }
 
-  .delivery {
-    max-width: 700px;
-  }
-}
-
-@media (max-width: 600px) {
-  
- .hero {
-    padding: 8px 0 20px;
+  .hero__intro {
+    max-width: 520px;
   }
 
-  .hero__inner {
-    gap: 24px;
+  .hero__eyebrow {
+    font-size: 0.68rem;
+  }
+
+  .hero h1 {
+    margin-top: 12px;
+
+    font-size: clamp(3rem, 6vw, 4.3rem);
+  }
+
+  .hero h2 {
+    margin-top: 20px;
+
+    font-size: clamp(1.5rem, 3vw, 2.05rem);
+  }
+
+  .hero__description {
+    margin-top: 18px;
+
+    font-size: 0.88rem;
+    line-height: 1.6;
   }
 
   .hero__github {
-    margin: 18px 0 0;
-  }
-  
+    margin-top: 22px;
 
-  /* ==============================
-     WORKFLOW FIRST
-  ============================== */
+    min-height: 42px;
+  }
+
+
+  /* DELIVERY KOMPAKTER */
+
+  .delivery__header {
+    padding: 14px 16px;
+  }
+
+  .delivery__label {
+    font-size: 0.62rem;
+  }
+
+  .delivery__environment {
+    font-size: 0.55rem;
+  }
+
+  .delivery__status {
+    font-size: 0.6rem;
+  }
+
+  .delivery__flow {
+    padding: 4px 16px 7px;
+  }
+
+  .delivery-phase {
+    grid-template-columns:
+      21px
+      minmax(0, 1fr);
+
+    gap: 8px;
+
+    padding: 10px 0;
+  }
+
+  .delivery-phase__marker {
+    padding-top: 5px;
+  }
+
+  .delivery-phase__number {
+    font-size: 0.52rem;
+  }
+
+  .delivery-phase h3 {
+    font-size: 0.8rem;
+  }
+
+  .delivery-phase__state {
+    font-size: 0.48rem;
+  }
+
+  .delivery-phase__subtitle {
+    margin-top: 3px;
+
+    font-size: 0.56rem;
+  }
+
+  .delivery-phase__items {
+    gap: 4px;
+
+    margin-top: 6px;
+  }
+
+  .delivery-item {
+    padding: 4px 6px;
+
+    font-size: 0.49rem;
+  }
+
+  .delivery__footer {
+    padding: 10px 16px;
+
+    font-size: 0.6rem;
+  }
+}
+
+
+/* ==============================
+   TABLET + MOBILE
+============================== */
+
+@media (max-width: 760px) {
+  .hero {
+    min-height: calc(100vh - 78px);
+
+    padding: 30px 0;
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+  }
+
+
+  /* INTRO */
+
+  .hero__intro {
+    order: 1;
+
+    width: 100%;
+    max-width: 620px;
+
+    margin-inline: auto;
+
+    text-align: left;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 7px;
+
+    font-size: 0.64rem;
+  }
+
+  .hero h1 {
+    margin-top: 0;
+
+    font-size: clamp(2.8rem, 8vw, 3.7rem);
+    line-height: 0.95;
+  }
+
+  .hero h2 {
+    margin-top: 14px;
+
+    font-size: clamp(1.35rem, 4vw, 1.75rem);
+    line-height: 1.1;
+  }
+
+  .hero h2 span {
+    display: block;
+  }
+
+  .hero__description {
+    margin-top: 15px;
+
+    font-size: 0.84rem;
+    line-height: 1.6;
+  }
+
+  .hero__github {
+    width: fit-content;
+
+    margin-top: 17px;
+
+    min-height: 40px;
+    padding: 0 15px;
+
+    font-size: 0.72rem;
+  }
+
+
+  /* SWITCH WORKFLOW */
+
+  .delivery--desktop {
+    display: none;
+  }
 
   .mobile-workflow {
     display: block;
 
-    order: 1;
+    order: 2;
 
     width: 100%;
+    max-width: 620px;
+
+    margin-inline: auto;
 
     overflow: hidden;
 
     border: 1px solid var(--border);
     border-radius: 12px;
 
-    background: var(--bg-secondary);
-  }
-
-  .delivery--desktop {
-    display: none;
+    background: rgba(255, 255, 255, 0.012);
   }
 
 
@@ -508,13 +691,15 @@
     align-items: center;
     justify-content: space-between;
 
-    padding: 14px 15px;
+    gap: 12px;
+
+    padding: 13px 15px;
 
     border-bottom: 1px solid var(--border);
 
     color: var(--text-secondary);
 
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     letter-spacing: 0.07em;
 
     text-transform: uppercase;
@@ -527,11 +712,14 @@
 
     gap: 6px;
 
-    color: #d2a85a;
+    flex-shrink: 0;
 
-    font-size: 0.52rem;
+    color: var(--accent);
+
+    font-size: 0.5rem;
 
     letter-spacing: 0;
+
     text-transform: none;
   }
 
@@ -541,7 +729,7 @@
 
     border-radius: 50%;
 
-    background: #d2a85a;
+    background: var(--accent);
   }
 
   .mobile-workflow__status--ready {
@@ -556,7 +744,7 @@
   /* STEPS */
 
   .mobile-workflow__steps {
-    padding: 6px 15px;
+    padding: 5px 15px;
   }
 
   .mobile-step {
@@ -565,14 +753,14 @@
     grid-template-columns:
       18px
       24px
-      1fr
+      minmax(0, 1fr)
       auto;
 
     gap: 8px;
 
     align-items: center;
 
-    min-height: 46px;
+    min-height: 43px;
 
     border-bottom: 1px solid var(--border);
 
@@ -601,7 +789,7 @@
 
     color: #5fd38d;
 
-    font-size: 0.72rem;
+    font-size: 0.7rem;
   }
 
   .mobile-step__indicator span {
@@ -613,9 +801,8 @@
     background: var(--text-muted);
   }
 
-  .mobile-step--active
-  .mobile-step__indicator span {
-    background: #d2a85a;
+  .mobile-step--active .mobile-step__indicator span {
+    background: var(--accent);
   }
 
 
@@ -628,13 +815,15 @@
       "JetBrains Mono",
       monospace;
 
-    font-size: 0.5rem;
+    font-size: 0.48rem;
   }
 
   .mobile-step strong {
+    min-width: 0;
+
     color: var(--text);
 
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     font-weight: 500;
   }
 
@@ -645,16 +834,14 @@
       "JetBrains Mono",
       monospace;
 
-    font-size: 0.48rem;
+    font-size: 0.46rem;
   }
 
-  .mobile-step--active
-  .mobile-step__state {
-    color: #d2a85a;
+  .mobile-step--active .mobile-step__state {
+    color: var(--accent);
   }
 
-  .mobile-step--done
-  .mobile-step__state {
+  .mobile-step--done .mobile-step__state {
     color: #5fd38d;
   }
 
@@ -668,13 +855,13 @@
 
     gap: 6px;
 
-    padding: 11px 15px;
+    padding: 10px 15px;
 
     border-top: 1px solid var(--border);
 
     color: var(--text-secondary);
 
-    font-size: 0.58rem;
+    font-size: 0.56rem;
 
     opacity: 0;
 
@@ -693,59 +880,97 @@
 
     background: #5fd38d;
   }
+}
 
 
-  /* ==============================
-     INTRO SECOND
-  ============================== */
+/* ==============================
+   MOBILE
+============================== */
 
-  .hero__intro {
-    order: 2;
+@media (max-width: 600px) {
+  .hero {
+    min-height: calc(100vh - 68px);
 
-    width: 100%;
-    max-width: none;
-
-    text-align: left;
+    padding: 24px 0 30px;
   }
 
-  .hero__eyebrow {
-    display: none;
+  .hero__inner {
+    gap: 22px;
+  }
+
+  .hero__intro {
+    max-width: none;
+
+    margin-inline: 0;
+  }
+
+  .mobile-workflow {
+    max-width: none;
+
+    margin-inline: 0;
   }
 
   .hero h1 {
-    margin-top: 0;
-
     font-size: 3rem;
-    line-height: 0.95;
   }
 
   .hero h2 {
-    margin-top: 16px;
-
     font-size: 1.45rem;
-    line-height: 1.1;
-  }
-
-  .hero h2 span {
-    display: block;
   }
 
   .hero__description {
-    display: none;
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+}
+
+
+/* ==============================
+   SMALL MOBILE
+============================== */
+
+@media (max-width: 420px) {
+  .hero {
+    min-height: calc(100vh - 68px);
+
+    padding-top: 22px;
   }
 
+  .hero h1 {
+    font-size: 2.65rem;
+  }
 
-  /* GITHUB */
+  .hero h2 {
+    font-size: 1.35rem;
+  }
 
-  .hero__github {
-    display: flex;
+  .hero__description {
+    font-size: 0.84rem;
+  }
 
-    width: fit-content;
+  .mobile-workflow__header {
+    padding-inline: 13px;
+  }
 
-    margin: 22px auto 0;
+  .mobile-workflow__steps {
+    padding-inline: 13px;
+  }
 
-    padding: 9px 18px;
+  .mobile-step {
+    grid-template-columns:
+      16px
+      21px
+      minmax(0, 1fr)
+      auto;
 
-    font-size: 0.74rem;
+    gap: 6px;
+  }
+
+  .mobile-step strong {
+    font-size: 0.72rem;
+  }
+
+  .mobile-step__state {
+    font-size: 0.43rem;
   }
 }

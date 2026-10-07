@@ -31,7 +31,7 @@ export class FeaturedProjects {
       slug: 'vikunja-aws-fargate',
       github: 'https://github.com/A-Marbach/vikunja-aws-fargate',
       description:
-        'Production-style AWS infrastructure for Vikunja using ECS Fargate, RDS PostgreSQL, S3, Secrets Manager and CloudWatch, fully provisioned with Terraform.',
+        'AWS infrastructure for Vikunja using ECS Fargate, RDS PostgreSQL, S3, Secrets Manager and CloudWatch, fully provisioned with Terraform.',
       image: '/assets/vikunja-aws-img.png',
       technologies: [
         'AWS',
@@ -94,9 +94,9 @@ export class FeaturedProjects {
     },
 
     {
-      title: 'BookStore DevSecOps Pipeline',
+      title: 'BookStore API',
       shortTitle: 'BookStore Pipeline',
-      slug: 'bookstore-devsecops',
+      slug: 'bookstore-pipeline',
       github: 'https://github.com/A-Marbach/bookStoreAPI',
       description:
         'Containerized application with an automated CI/CD pipeline including security scanning, image analysis and monitoring.',
@@ -105,12 +105,11 @@ export class FeaturedProjects {
         'Docker',
         'GitHub Actions',
         'Trivy',
-        'Gitleaks',
         'Hadolint',
       ],
       highlights: [
         'Automated CI/CD pipeline with GitHub Actions',
-        'Container and source code security scanning',
+        'Dockerfile validation and container image security scanning',
         'Docker-based deployment with monitoring',
       ],
     },

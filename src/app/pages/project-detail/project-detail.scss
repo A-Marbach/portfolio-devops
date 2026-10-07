@@ -2,25 +2,42 @@
   min-height: 100vh;
 }
 
-.container {
-  width: min(1180px, calc(100% - 48px));
-  margin: 0 auto;
-}
+/* ==============================
+   SHARED SECTION SPACING
+============================== */
 
-.project-hero {
-  padding: 140px 0 85px;
+.project-hero,
+.project-summary,
+.architecture-section,
+.decisions-section,
+.challenge-section,
+.result-section {
+  padding: 80px 0;
   border-bottom: 1px solid var(--border);
 }
 
+.project-summary,
+.challenge-section {
+  background: rgba(255, 255, 255, 0.006);
+}
+
+/* ==============================
+   HERO
+============================== */
+
 .back-link {
   display: inline-block;
-  margin-bottom: 55px;
-  color: var(--text-muted);
+  margin-bottom: 48px;
+  color: var(--accent);
   font-size: 0.8rem;
   text-decoration: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 
   &:hover {
-    color: var(--text);
+    opacity: 0.75;
+    transform: translateX(-2px);
   }
 }
 
@@ -37,11 +54,21 @@
 .result-label,
 .section-heading p {
   margin: 0 0 16px;
-  color: var(--text-muted);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.project-type,
+.challenge-label,
+.result-label {
+  color: var(--accent);
+}
+
+.summary-label,
+.section-heading p {
+  color: var(--text-muted);
 }
 
 .project-hero h1 {
@@ -62,18 +89,34 @@
 }
 
 .project-actions {
-  margin-top: 30px;
+  margin-top: 32px;
 }
 
 .primary-link {
   display: inline-flex;
   align-items: center;
-  padding-bottom: 4px;
-  border-bottom: 1px solid var(--text);
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.018);
   color: var(--text);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
 }
 
 .project-stack {
@@ -85,28 +128,26 @@
   span {
     padding: 8px 11px;
     border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.012);
     color: var(--text-muted);
     font-size: 0.7rem;
   }
 }
 
-
-/* SUMMARY */
-
-.project-summary {
-  padding: 70px 0;
-  border-bottom: 1px solid var(--border);
-}
+/* ==============================
+   SUMMARY
+============================== */
 
 .summary-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 
 .summary-card {
   padding: 28px;
   border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.012);
 
   h2 {
     margin: 0 0 15px;
@@ -123,16 +164,9 @@
   }
 }
 
-
-/* HEADINGS */
-
-.architecture-section,
-.decisions-section,
-.challenge-section,
-.result-section {
-  padding: 90px 0;
-  border-bottom: 1px solid var(--border);
-}
+/* ==============================
+   SECTION HEADINGS
+============================== */
 
 .section-heading {
   max-width: 700px;
@@ -147,12 +181,14 @@
   }
 }
 
-
-/* ARCHITECTURE */
+/* ==============================
+   ARCHITECTURE
+============================== */
 
 .architecture-board {
   padding: 28px;
   border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.008);
 }
 
 .architecture-main {
@@ -163,8 +199,10 @@
 
 .arch-box {
   flex: 1;
+  min-width: 0;
   padding: 24px;
   border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.008);
 
   small {
     display: block;
@@ -184,11 +222,17 @@
     margin: 6px 0 0;
     color: var(--text-muted);
     font-size: 0.75rem;
+    line-height: 1.5;
   }
 }
 
 .arch-box--main {
-  border-color: var(--text-muted);
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.018);
+
+  small {
+    color: var(--accent);
+  }
 }
 
 .arch-line {
@@ -197,13 +241,14 @@
 
 .architecture-services {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: 14px;
 
   > div {
     padding: 20px;
     border: 1px solid var(--border);
     border-right: 0;
+    background: rgba(255, 255, 255, 0.008);
 
     &:last-child {
       border-right: 1px solid var(--border);
@@ -224,17 +269,19 @@
   }
 }
 
-
-/* DECISIONS */
+/* ==============================
+   DECISIONS
+============================== */
 
 .decision-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 
   article {
     padding: 28px;
     border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.01);
   }
 
   h3 {
@@ -251,12 +298,13 @@
   }
 }
 
-
-/* CHALLENGE */
+/* ==============================
+   CHALLENGE
+============================== */
 
 .challenge-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 90px;
   align-items: start;
 
@@ -272,7 +320,7 @@
 
 .challenge-answer {
   padding-left: 28px;
-  border-left: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
 
   p {
     margin: 0;
@@ -283,15 +331,11 @@
       margin-top: 22px;
     }
   }
-
-  strong {
-    color: var(--text);
-    font-weight: 500;
-  }
 }
 
-
-/* RESULT */
+/* ==============================
+   RESULT
+============================== */
 
 .result-content {
   max-width: 820px;
@@ -306,7 +350,7 @@
 
   ul {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px 40px;
     margin: 35px 0;
     padding: 0;
@@ -315,31 +359,56 @@
 
   li {
     position: relative;
-    padding-left: 18px;
+    padding-left: 20px;
     color: var(--text-muted);
     font-size: 0.9rem;
+    line-height: 1.6;
 
     &::before {
       content: '✓';
       position: absolute;
       left: 0;
-      color: var(--text);
+      color: var(--accent);
     }
   }
 }
 
-
-/* RESPONSIVE */
+/* ==============================
+   TABLET
+============================== */
 
 @media (max-width: 900px) {
-  .project-hero__content {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  .project-hero,
+  .project-summary,
+  .architecture-section,
+  .decisions-section,
+  .challenge-section,
+  .result-section {
+    padding: 70px 0;
   }
 
-  .summary-grid,
-  .challenge-grid {
+  .project-hero__content {
     grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .section-heading,
+  .architecture-board,
+  .decision-cards {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .section-heading {
+    margin-bottom: 38px;
   }
 
   .decision-cards {
@@ -352,46 +421,93 @@
   }
 
   .arch-line {
-    text-align: center;
+    align-self: center;
     transform: rotate(90deg);
   }
 
   .architecture-services {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    > div:nth-child(2) {
+    > div:nth-child(2n) {
       border-right: 1px solid var(--border);
     }
   }
 
+  .challenge-grid {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin-inline: auto;
+    gap: 32px;
+  }
+
   .challenge-answer {
-    padding-left: 0;
-    border-left: none;
+    padding: 24px 0 0;
+    border-left: 0;
+    border-top: 2px solid var(--accent);
+  }
+
+  .result-content {
+    max-width: 720px;
+    margin-inline: auto;
   }
 }
 
+/* ==============================
+   MOBILE
+============================== */
+
 @media (max-width: 600px) {
-  .container {
-    width: min(100% - 32px, 1180px);
-  }
-
-  .project-hero {
-    padding: 105px 0 60px;
-  }
-
-  .project-hero h1 {
-    font-size: clamp(2.8rem, 13vw, 4rem);
-  }
-
+  .project-hero,
+  .project-summary,
   .architecture-section,
   .decisions-section,
   .challenge-section,
   .result-section {
-    padding: 65px 0;
+    padding: 60px 0;
+  }
+
+  .back-link {
+    margin-bottom: 32px;
+  }
+
+  .project-hero__content {
+    max-width: none;
+  }
+
+  .project-hero h1 {
+    font-size: clamp(2.6rem, 12vw, 3.7rem);
+  }
+
+  .project-intro {
+    margin-top: 22px;
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .summary-grid,
+  .challenge-grid,
+  .result-content {
+    max-width: none;
+    margin-inline: auto;
+  }
+
+  .section-heading,
+  .architecture-board,
+  .decision-cards {
+    max-width: none;
+  }
+
+  .summary-card,
+  .decision-cards article {
+    padding: 22px;
   }
 
   .architecture-board {
     padding: 16px;
+  }
+
+  .arch-box {
+    padding: 20px;
   }
 
   .architecture-services {
@@ -407,7 +523,25 @@
     }
   }
 
+  .section-heading {
+    margin-bottom: 30px;
+  }
+
+  .section-heading h2 {
+    font-size: 2rem;
+  }
+
+  .challenge-grid h2 {
+    font-size: 2.2rem;
+  }
+
+  .result-content h2 {
+    font-size: 2.15rem;
+  }
+
   .result-content ul {
     grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 28px 0;
   }
 }

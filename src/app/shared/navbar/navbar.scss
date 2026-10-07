@@ -27,51 +27,43 @@
 ========================= */
 
 .brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
 
-  gap: 13px;
+  gap: 14px;
 
   flex-shrink: 0;
+
+  text-decoration: none;
 }
 
-.brand__mark {
-  width: 42px;
-  height: 42px;
+.brand__logo {
+  display: inline-flex;
+  align-items: baseline;
 
-  display: grid;
-  place-items: center;
+  min-width: 44px;
 
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    monospace;
 
-  background: var(--surface);
+  font-size: 1rem;
+  font-weight: 700;
 
+  letter-spacing: -0.04em;
+}
+
+.brand__logo-text {
   color: var(--text);
 
-  font-size: 0.86rem;
-  font-weight: 750;
-  letter-spacing: 0.04em;
-
-  transition:
-    border-color 160ms ease,
-    background 160ms ease,
-    transform 160ms ease;
+  transition: color 160ms ease;
 }
 
-.brand:hover .brand__mark {
-  border-color: var(--accent);
+.brand__cursor {
+  margin-left: 1px;
 
-  background: var(--accent-soft);
-
-  transform: translateY(-1px);
-}
-
-.brand__text {
-  display: flex;
-  flex-direction: column;
-
-  line-height: 1.2;
+  color: var(--accent);
 }
 
 .brand__name {
@@ -81,21 +73,13 @@
   font-weight: 650;
 }
 
-.brand__role {
-  margin-top: 4px;
-
-  color: var(--text-muted);
-
-  font-size: 0.69rem;
-  font-weight: 500;
-
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+.brand:hover .brand__logo-text {
+  color: var(--accent);
 }
 
 
 /* =========================
-   NAVIGATION
+   DESKTOP NAVIGATION
 ========================= */
 
 .nav {
@@ -119,15 +103,17 @@
   font-size: 0.87rem;
   font-weight: 500;
 
+  text-decoration: none;
+
   transition:
     color 160ms ease,
     background 160ms ease;
 }
 
 .nav a:hover {
-  color: var(--text);
+  color: var(--accent);
 
-  background: rgba(255, 255, 255, 0.035);
+  background: var(--accent-soft);
 }
 
 .nav a::after {
@@ -149,11 +135,7 @@
   transition: transform 160ms ease;
 }
 
-.nav a.active {
-  color: var(--text);
-}
-
-.nav a.active::after {
+.nav a:hover::after {
   transform: scaleX(1);
 }
 
@@ -172,7 +154,9 @@
 }
 
 
-/* GITHUB */
+/* =========================
+   GITHUB
+========================= */
 
 .github {
   height: 40px;
@@ -187,15 +171,20 @@
   border: 1px solid var(--border);
   border-radius: 8px;
 
+  background: rgba(255, 255, 255, 0.018);
+
   color: var(--text-secondary);
 
   font-size: 0.84rem;
   font-weight: 500;
 
+  text-decoration: none;
+
   transition:
     color 160ms ease,
     border-color 160ms ease,
-    background 160ms ease;
+    background 160ms ease,
+    transform 160ms ease;
 }
 
 .github svg {
@@ -204,11 +193,13 @@
 }
 
 .github:hover {
-  color: #7dd3fc;
+  color: var(--accent);
 
-  border-color: rgba(56, 189, 248, 0.4);
+  border-color: var(--accent);
 
-  background: rgba(56, 189, 248, 0.05);
+  background: var(--accent-soft);
+
+  transform: translateY(-1px);
 }
 
 
@@ -234,6 +225,16 @@
   border-radius: 8px;
 
   cursor: pointer;
+
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.menu-button:hover {
+  border-color: var(--accent);
+
+  background: var(--accent-soft);
 }
 
 .menu-button span {
@@ -244,7 +245,12 @@
 
   transition:
     transform 180ms ease,
-    opacity 180ms ease;
+    opacity 180ms ease,
+    background 180ms ease;
+}
+
+.menu-button:hover span {
+  background: var(--accent);
 }
 
 .menu-button.active span:nth-child(1) {
@@ -298,8 +304,6 @@
   display: flex;
   align-items: center;
 
-  gap: 14px;
-
   padding: 14px 4px;
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -307,27 +311,23 @@
   color: var(--text-secondary);
 
   font-size: 0.95rem;
+  font-weight: 500;
 
-  transition: color 160ms ease;
+  text-decoration: none;
+
+  transition:
+    color 160ms ease,
+    padding-left 160ms ease;
 }
 
 .mobile-nav a:last-child {
   border-bottom: 0;
 }
 
-.mobile-nav a span {
-  color: var(--text-muted);
-
-  font-family:
-    "JetBrains Mono",
-    monospace;
-
-  font-size: 0.62rem;
-}
-
-.mobile-nav a.active,
 .mobile-nav a:hover {
-  color: var(--text);
+  color: var(--accent);
+
+  padding-left: 8px;
 }
 
 
@@ -336,10 +336,6 @@
 ========================= */
 
 @media (max-width: 1050px) {
-  .brand__role {
-    display: none;
-  }
-
   .nav {
     gap: 2px;
   }
@@ -386,12 +382,17 @@
     height: 68px;
   }
 
-  .brand__mark {
-    width: 38px;
-    height: 38px;
+  .brand {
+    gap: 10px;
   }
 
-  .brand__text {
+  .brand__logo {
+    min-width: 38px;
+
+    font-size: 0.95rem;
+  }
+
+  .brand__name {
     display: none;
   }
 

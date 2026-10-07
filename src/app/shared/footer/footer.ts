@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
   selector: 'app-footer',
-  styleUrl: './footer.scss',
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './footer.html',
+  styleUrl: './footer.scss',
 })
 export class Footer {}

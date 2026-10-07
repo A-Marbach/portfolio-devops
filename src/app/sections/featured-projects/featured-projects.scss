@@ -108,7 +108,7 @@
 
   height: 2px;
 
-  background: var(--text);
+  background: var(--accent);
 }
 
 .project-tab__number {
@@ -199,17 +199,8 @@
   height: 470px;
 }
 
-.showcase__label {
-  color: var(--text-muted);
-
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-
-  text-transform: uppercase;
-}
-
 .showcase__content h3 {
-  margin-top: 13px;
+  margin-top: 0;
 
   min-height: 2.2em;
 
@@ -249,7 +240,7 @@
 }
 
 .showcase__highlights li::marker {
-  color: var(--text-muted);
+  color: var(--accent);
 }
 
 
@@ -299,17 +290,26 @@
   align-items: center;
   justify-content: center;
 
-  padding: 10px 16px;
+  min-height: 46px;
 
-  border-radius: 7px;
+  padding: 0 18px;
 
-  font-size: 0.86rem;
-  font-weight: 500;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.018);
+
+  color: var(--text);
+
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  text-decoration: none;
 
   transition:
+    border-color 0.2s ease,
     background 0.2s ease,
     color 0.2s ease,
-    border-color 0.2s ease,
     transform 0.2s ease;
 }
 
@@ -317,16 +317,19 @@
 /* PRIMARY */
 
 .project-button--primary {
-  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-color: var(--border);
 
-  background: rgba(56, 189, 248, 0.05);
-  color: #7dd3fc;
+  background: rgba(255, 255, 255, 0.018);
+
+  color: var(--text);
 }
 
 .project-button--primary:hover {
-  border-color: rgba(56, 189, 248, 0.55);
+  border-color: var(--accent);
 
-  background: rgba(56, 189, 248, 0.1);
+  background: rgba(255, 255, 255, 0.035);
+
+  color: var(--accent);
 
   transform: translateY(-1px);
 }
@@ -335,17 +338,19 @@
 /* SECONDARY */
 
 .project-button--secondary {
-  border: 1px solid var(--border-hover);
+  border-color: var(--border);
 
-  background: var(--bg-secondary);
+  background: transparent;
+
   color: var(--text-secondary);
 }
 
 .project-button--secondary:hover {
-  border-color: rgba(56, 189, 248, 0.45);
+  border-color: var(--accent);
 
-  background: rgba(56, 189, 248, 0.06);
-  color: #7dd3fc;
+  background: rgba(255, 255, 255, 0.025);
+
+  color: var(--accent);
 
   transform: translateY(-1px);
 }
@@ -400,7 +405,7 @@
 }
 
 .project-navigation__button:hover:not(:disabled) {
-  color: #7dd3fc;
+  color: var(--accent);
 }
 
 .project-navigation__button:disabled {
@@ -467,9 +472,18 @@
     padding: 80px 0;
   }
 
+  .projects-showcase__header {
+    max-width: 720px;
+
+    margin-inline: auto;
+  }
+
   .project-tabs {
     grid-template-columns: repeat(2, 1fr);
 
+    max-width: 720px;
+
+    margin-inline: auto;
     margin-bottom: 30px;
   }
 
@@ -484,21 +498,39 @@
   .showcase {
     grid-template-columns: 1fr;
 
-    gap: 36px;
+    gap: 34px;
+
+    max-width: 720px;
+
+    margin-inline: auto;
   }
 
   .showcase__image {
+    width: 100%;
+    max-width: 720px;
+
     height: 400px;
+
+    margin-inline: auto;
   }
 
   .showcase__content {
-    max-width: 720px;
+    width: 100%;
+    max-width: 620px;
 
     height: auto;
+
+    margin-inline: auto;
+
+    text-align: left;
   }
 
   .showcase__content h3 {
     min-height: auto;
+  }
+
+  .showcase__description {
+    max-width: 600px;
   }
 
   .project-actions {
@@ -506,6 +538,9 @@
   }
 
   .project-navigation {
+    max-width: 720px;
+
+    margin-inline: auto;
     margin-top: 46px;
   }
 }
@@ -521,6 +556,9 @@
   }
 
   .projects-showcase__header {
+    max-width: none;
+
+    margin-inline: 0;
     margin-bottom: 30px;
   }
 
@@ -544,6 +582,9 @@
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
 
+    max-width: none;
+
+    margin-inline: 0;
     margin-bottom: 26px;
 
     overflow: visible;
@@ -592,16 +633,30 @@
   /* SHOWCASE */
 
   .showcase {
+    max-width: none;
+
+    margin-inline: 0;
+
     gap: 28px;
   }
 
   .showcase__image {
+    width: 100%;
+    max-width: none;
+
     height: 250px;
+
+    margin-inline: 0;
 
     border-radius: 10px;
   }
 
   .showcase__content {
+    width: 100%;
+    max-width: none;
+
+    margin-inline: 0;
+
     height: auto;
   }
 
@@ -662,9 +717,13 @@
       auto
       minmax(0, 1fr);
 
+    max-width: none;
+
+    margin-inline: 0;
+    margin-top: 40px;
+
     gap: 12px;
 
-    margin-top: 40px;
     padding-top: 20px;
   }
 

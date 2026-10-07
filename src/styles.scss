@@ -33,6 +33,10 @@ html {
   scroll-behavior: smooth;
 }
 
+section {
+  scroll-margin-top: 90px;
+}
+
 body {
   min-height: 100vh;
   background: var(--bg);

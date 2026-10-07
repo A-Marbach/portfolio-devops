@@ -1,41 +1,44 @@
-<main class="project-case">
+<main class="project-case" *ngIf="project">
 
   <section class="project-hero">
     <div class="container">
-      <a routerLink="/" class="back-link">← Back to home</a>
+      <a routerLink="/" class="back-link">
+        ← Back to home
+      </a>
 
       <div class="project-hero__content">
-        <div>
-          <p class="project-type">AWS · INFRASTRUCTURE · TERRAFORM</p>
 
-          <h1>Vikunja on AWS ECS Fargate</h1>
+        <div>
+          <p class="project-type">
+            {{ project.type }}
+          </p>
+
+          <h1>
+            {{ project.title }}
+          </h1>
 
           <p class="project-intro">
-            A production-style cloud deployment for Vikunja with containerized
-            compute, persistent data, secrets management, monitoring and
-            reproducible infrastructure.
+            {{ project.intro }}
           </p>
 
           <div class="project-actions">
             <a
-              href="https://github.com/A-Marbach/vikunja-aws-fargate"
+              [href]="project.repository"
               target="_blank"
               rel="noopener noreferrer"
               class="primary-link"
             >
-              View Repository ↗
+              GitHub
             </a>
           </div>
         </div>
 
         <div class="project-stack">
-          <span>AWS</span>
-          <span>Terraform</span>
-          <span>ECS Fargate</span>
-          <span>RDS</span>
-          <span>S3</span>
-          <span>CloudWatch</span>
+          <span *ngFor="let technology of project.stack">
+            {{ technology }}
+          </span>
         </div>
+
       </div>
     </div>
   </section>
@@ -46,19 +49,25 @@
 
       <div class="summary-card">
         <span class="summary-label">GOAL</span>
-        <h2>Run Vikunja reliably in AWS.</h2>
+
+        <h2>
+          {{ project.goal.title }}
+        </h2>
+
         <p>
-          Build a cloud environment where compute, database, files and secrets
-          are separated instead of living inside one container.
+          {{ project.goal.text }}
         </p>
       </div>
 
       <div class="summary-card">
         <span class="summary-label">APPROACH</span>
-        <h2>Managed services + Infrastructure as Code.</h2>
+
+        <h2>
+          {{ project.approach.title }}
+        </h2>
+
         <p>
-          ECS Fargate runs the application while RDS, S3, Secrets Manager and
-          CloudWatch handle persistence and operations.
+          {{ project.approach.text }}
         </p>
       </div>
 
@@ -71,54 +80,68 @@
 
       <div class="section-heading">
         <p>Architecture</p>
-        <h2>A simple separation between compute, data and operations.</h2>
+
+        <h2>
+          {{ project.architecture.title }}
+        </h2>
       </div>
 
       <div class="architecture-board">
 
         <div class="architecture-main">
-          <div class="arch-box">
-            <small>ENTRY</small>
-            <strong>Internet</strong>
-          </div>
 
-          <span class="arch-line">→</span>
+          <ng-container
+            *ngFor="
+              let item of project.architecture.main;
+              let last = last
+            "
+          >
 
-          <div class="arch-box">
-            <small>NETWORK</small>
-            <strong>VPC</strong>
-            <p>Security Groups</p>
-          </div>
+            <div
+              class="arch-box"
+              [class.arch-box--main]="item.active"
+            >
+              <small>
+                {{ item.label }}
+              </small>
 
-          <span class="arch-line">→</span>
+              <strong>
+                {{ item.title }}
+              </strong>
 
-          <div class="arch-box arch-box--main">
-            <small>COMPUTE</small>
-            <strong>ECS Fargate</strong>
-            <p>Vikunja Container</p>
-          </div>
+              <p *ngIf="item.description">
+                {{ item.description }}
+              </p>
+            </div>
+
+            <span
+              *ngIf="!last"
+              class="arch-line"
+            >
+              →
+            </span>
+
+          </ng-container>
+
         </div>
 
+
         <div class="architecture-services">
-          <div>
-            <small>DATABASE</small>
-            <strong>RDS PostgreSQL</strong>
+
+          <div
+            *ngFor="
+              let service of project.architecture.services
+            "
+          >
+            <small>
+              {{ service.label }}
+            </small>
+
+            <strong>
+              {{ service.title }}
+            </strong>
           </div>
 
-          <div>
-            <small>FILES</small>
-            <strong>Amazon S3</strong>
-          </div>
-
-          <div>
-            <small>SECRETS</small>
-            <strong>Secrets Manager</strong>
-          </div>
-
-          <div>
-            <small>OBSERVABILITY</small>
-            <strong>CloudWatch</strong>
-          </div>
         </div>
 
       </div>
@@ -132,32 +155,23 @@
 
       <div class="section-heading">
         <p>Key decisions</p>
-        <h2>Why I built it this way.</h2>
+
+        <h2>
+          Why I built it this way.
+        </h2>
       </div>
 
       <div class="decision-cards">
 
-        <article>
-          <h3>ECS Fargate</h3>
-          <p>
-            No EC2 host management. The project stays focused on containers,
-            networking and application infrastructure.
-          </p>
-        </article>
+        <article
+          *ngFor="let decision of project.decisions"
+        >
+          <h3>
+            {{ decision.title }}
+          </h3>
 
-        <article>
-          <h3>RDS + S3</h3>
           <p>
-            Persistent data is separated from disposable ECS tasks, so
-            redeployments do not destroy application state.
-          </p>
-        </article>
-
-        <article>
-          <h3>Terraform</h3>
-          <p>
-            The environment can be recreated and reviewed instead of depending
-            on manual AWS console configuration.
+            {{ decision.text }}
           </p>
         </article>
 
@@ -171,26 +185,25 @@
     <div class="container challenge-grid">
 
       <div>
-        <p class="challenge-label">MAIN CHALLENGE</p>
+        <p class="challenge-label">
+          MAIN CHALLENGE
+        </p>
 
         <h2>
-          Containers can disappear.
-          The data cannot.
+          {{ project.challenge.title }}
         </h2>
       </div>
 
       <div class="challenge-answer">
+
         <p>
-          ECS tasks are replaceable, so application state could not live inside
-          the container.
+          {{ project.challenge.problem }}
         </p>
 
         <p>
-          I separated persistence from compute using
-          <strong>RDS PostgreSQL</strong> and <strong>S3</strong>.
-          This allowed ECS tasks to restart or be replaced without losing
-          application data.
+          {{ project.challenge.solution }}
         </p>
+
       </div>
 
     </div>
@@ -201,26 +214,30 @@
     <div class="container result-content">
 
       <div>
-        <p class="result-label">RESULT</p>
+        <p class="result-label">
+          RESULT
+        </p>
 
-        <h2>Reproducible and recoverable infrastructure.</h2>
+        <h2>
+          {{ project.result.title }}
+        </h2>
       </div>
 
       <ul>
-        <li>Terraform-managed AWS infrastructure</li>
-        <li>Persistent database and file storage</li>
-        <li>Secrets kept outside source code</li>
-        <li>CloudWatch logging and monitoring</li>
-        <li>Backup and restore behavior tested</li>
+        <li
+          *ngFor="let item of project.result.items"
+        >
+          {{ item }}
+        </li>
       </ul>
 
       <a
-        href="https://github.com/A-Marbach/vikunja-aws-fargate"
+        [href]="project.repository"
         target="_blank"
         rel="noopener noreferrer"
         class="primary-link"
       >
-        Explore the implementation ↗
+        GitHub
       </a>
 
     </div>

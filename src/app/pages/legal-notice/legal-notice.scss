@@ -1,0 +1,282 @@
+.legal {
+  min-height: calc(100vh - 78px);
+
+  padding: 72px 0 100px;
+}
+
+
+/* ==============================
+   CONTAINER
+============================== */
+
+.legal__container {
+  width: 100%;
+  max-width: 800px;
+
+  margin-inline: auto;
+
+  padding-inline: 20px;
+}
+
+
+/* ==============================
+   BACK LINK
+============================== */
+
+.legal__back {
+  display: inline-flex;
+  align-items: center;
+
+  margin-bottom: 32px;
+
+  color: var(--text-muted);
+
+  font-size: 0.8rem;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.legal__back:hover {
+  color: var(--accent);
+
+  transform: translateX(-2px);
+}
+
+
+/* ==============================
+   HEADER
+============================== */
+
+.legal__header {
+  padding-bottom: 38px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.section-label {
+  color: var(--accent);
+
+  font-size: 0.66rem;
+  font-weight: 600;
+
+  letter-spacing: 0.09em;
+
+  text-transform: uppercase;
+}
+
+.legal__header h1 {
+  margin-top: 8px;
+
+  color: var(--text);
+
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  line-height: 1.05;
+
+  letter-spacing: -0.045em;
+}
+
+.legal__header p {
+  max-width: 560px;
+
+  margin-top: 16px;
+
+  color: var(--text-secondary);
+
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
+
+/* ==============================
+   CONTENT
+============================== */
+
+.legal__content {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ==============================
+   SECTIONS
+============================== */
+
+.legal__section {
+  padding: 30px 0;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.legal__section:last-child {
+  border-bottom: 0;
+}
+
+.legal__section h2 {
+  margin-bottom: 11px;
+
+  color: var(--text);
+
+  font-size: 0.98rem;
+  font-weight: 600;
+
+  letter-spacing: -0.01em;
+}
+
+.legal__section p {
+  max-width: 620px;
+
+  color: var(--text-secondary);
+
+  font-size: 0.88rem;
+  line-height: 1.75;
+}
+
+
+/* ==============================
+   LINKS
+============================== */
+
+.legal__section a {
+  color: var(--text);
+
+  text-decoration: underline;
+  text-decoration-color: var(--border-hover);
+  text-underline-offset: 4px;
+
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
+}
+
+.legal__section a:hover {
+  color: var(--accent);
+
+  text-decoration-color: var(--accent);
+}
+
+
+/* ==============================
+   TABLET
+============================== */
+
+@media (max-width: 900px) {
+  .legal {
+    padding: 62px 0 90px;
+  }
+
+  .legal__container {
+    max-width: 720px;
+
+    padding-inline: 28px;
+  }
+
+  .legal__header h1 {
+    font-size: 3rem;
+  }
+}
+
+
+/* ==============================
+   SMALL TABLET
+============================== */
+
+@media (max-width: 700px) {
+  .legal {
+    padding: 52px 0 80px;
+  }
+
+  .legal__container {
+    max-width: 620px;
+
+    padding-inline: 24px;
+  }
+
+  .legal__header {
+    padding-bottom: 32px;
+  }
+
+  .legal__section {
+    padding: 27px 0;
+  }
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 600px) {
+  .legal {
+    min-height: calc(100vh - 68px);
+
+    padding: 44px 0 65px;
+  }
+
+  .legal__container {
+    max-width: none;
+
+    padding-inline: 20px;
+  }
+
+  .legal__back {
+    margin-bottom: 28px;
+
+    font-size: 0.76rem;
+  }
+
+  .legal__header {
+    padding-bottom: 28px;
+  }
+
+  .legal__header h1 {
+    margin-top: 7px;
+
+    font-size: 2.35rem;
+  }
+
+  .legal__header p {
+    margin-top: 14px;
+
+    font-size: 0.86rem;
+    line-height: 1.65;
+  }
+
+  .legal__section {
+    padding: 24px 0;
+  }
+
+  .legal__section h2 {
+    margin-bottom: 9px;
+
+    font-size: 0.95rem;
+  }
+
+  .legal__section p {
+    font-size: 0.84rem;
+    line-height: 1.7;
+  }
+}
+
+
+/* ==============================
+   SMALL MOBILE
+============================== */
+
+@media (max-width: 400px) {
+  .legal__container {
+    padding-inline: 16px;
+  }
+
+  .legal__header h1 {
+    font-size: 2.1rem;
+  }
+
+  .legal__section p {
+    font-size: 0.82rem;
+  }
+}

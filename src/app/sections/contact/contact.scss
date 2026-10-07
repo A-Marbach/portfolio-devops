@@ -1,5 +1,5 @@
 .contact {
-  padding: 120px 0;
+  padding: 100px 0;
 
   border-top: 1px solid var(--border);
 }
@@ -58,6 +58,17 @@
   line-height: 1.75;
 }
 
+.contact__closing {
+  max-width: 620px;
+
+  margin-top: 16px;
+
+  color: var(--text-muted);
+
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
 
 /* ==============================
    EMAIL
@@ -66,7 +77,8 @@
 .contact__mail {
   display: inline-block;
 
-  margin-top: 40px;
+  margin-top: 42px;
+  margin-right: 24px;
 
   padding-bottom: 5px;
 
@@ -77,15 +89,17 @@
   font-size: clamp(1.15rem, 2vw, 1.5rem);
   font-weight: 500;
 
+  text-decoration: none;
+
   transition:
     color 0.2s ease,
     border-color 0.2s ease;
 }
 
 .contact__mail:hover {
-  color: #7dd3fc;
+  color: var(--accent);
 
-  border-color: rgba(56, 189, 248, 0.55);
+  border-color: var(--accent);
 }
 
 
@@ -94,38 +108,117 @@
 ============================== */
 
 .contact__github {
-  width: fit-content;
+  display: inline-flex;
 
-  display: flex;
   align-items: center;
   justify-content: center;
 
-  margin-top: 28px;
+  width: fit-content;
 
-  padding: 10px 17px;
+  margin-top: 36px;
 
-  border: 1px solid rgba(56, 189, 248, 0.28);
-  border-radius: 7px;
+  min-height: 46px;
+  padding: 0 18px;
 
-  background: rgba(56, 189, 248, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
 
-  color: #7dd3fc;
+  background: rgba(255, 255, 255, 0.018);
 
-  font-size: 0.86rem;
-  font-weight: 500;
+  color: var(--text);
+
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  text-decoration: none;
 
   transition:
-    background 0.2s ease,
     border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
     transform 0.2s ease;
 }
 
 .contact__github:hover {
-  background: rgba(56, 189, 248, 0.1);
+  border-color: var(--accent);
 
-  border-color: rgba(56, 189, 248, 0.55);
+  background: rgba(255, 255, 255, 0.035);
+
+  color: var(--accent);
 
   transform: translateY(-1px);
+}
+
+
+/* ==============================
+   SMALL DESKTOP
+============================== */
+
+@media (max-width: 1000px) and (min-width: 761px) {
+  .contact {
+    padding: 88px 0;
+  }
+
+  .contact__inner {
+    max-width: 720px;
+  }
+
+  .contact h2 {
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+  }
+
+  .contact p {
+    max-width: 620px;
+
+    font-size: 0.95rem;
+  }
+
+  .contact__closing {
+    max-width: 600px;
+
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ==============================
+   TABLET
+============================== */
+
+@media (max-width: 760px) {
+  .contact {
+    padding: 78px 0;
+  }
+
+  .contact__inner {
+    max-width: 620px;
+  }
+
+  .contact h2 {
+    font-size: 3rem;
+  }
+
+  .contact p {
+    margin-top: 24px;
+
+    font-size: 0.92rem;
+    line-height: 1.68;
+  }
+
+  .contact__closing {
+    margin-top: 15px;
+
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .contact__mail {
+    margin-top: 36px;
+  }
+
+  .contact__github {
+    margin-top: 30px;
+  }
 }
 
 
@@ -135,11 +228,30 @@
 
 @media (max-width: 600px) {
   .contact {
-    padding: 80px 0;
+    padding: 68px 0;
+  }
+
+  /*
+    NICHT width: 100% setzen!
+
+    contact__inner hat auch die Klasse .container.
+    Dadurch kommen automatisch die 20px Abstand
+    links und rechts aus deinem globalen CSS.
+  */
+
+  .contact__inner {
+    max-width: none;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
   }
 
   .contact h2 {
+    margin-top: 8px;
+
     font-size: 2.6rem;
+    line-height: 1;
   }
 
   .contact p {
@@ -149,17 +261,61 @@
     line-height: 1.65;
   }
 
+  .contact__closing {
+    margin-top: 14px;
+
+    font-size: 0.86rem;
+    line-height: 1.65;
+  }
+
   .contact__mail {
+    display: block;
+
+    width: fit-content;
+
     margin-top: 32px;
+    margin-right: 0;
 
     font-size: 1.05rem;
   }
 
   .contact__github {
-    margin-top: 24px;
+    display: flex;
 
-    padding: 9px 16px;
+    width: fit-content;
 
-    font-size: 0.78rem;
+    margin-top: 26px;
+
+    min-height: 42px;
+    padding: 0 16px;
+
+    font-size: 0.76rem;
+  }
+}
+
+
+/* ==============================
+   SMALL MOBILE
+============================== */
+
+@media (max-width: 420px) {
+  .contact {
+    padding: 60px 0;
+  }
+
+  .contact h2 {
+    font-size: 2.25rem;
+  }
+
+  .contact p {
+    font-size: 0.86rem;
+  }
+
+  .contact__closing {
+    font-size: 0.82rem;
+  }
+
+  .contact__mail {
+    font-size: 1rem;
   }
 }
