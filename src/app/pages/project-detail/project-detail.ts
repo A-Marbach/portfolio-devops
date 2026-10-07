@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
   selector: 'app-project-detail',
-  styleUrl: './project-detail.scss',
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './project-detail.html',
+  styleUrl: './project-detail.scss',
 })
 export class ProjectDetail {}

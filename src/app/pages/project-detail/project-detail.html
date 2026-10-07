@@ -1,1 +1,229 @@
-<p>project-detail works!</p>
+<main class="project-case">
+
+  <section class="project-hero">
+    <div class="container">
+      <a routerLink="/" class="back-link">← Back to home</a>
+
+      <div class="project-hero__content">
+        <div>
+          <p class="project-type">AWS · INFRASTRUCTURE · TERRAFORM</p>
+
+          <h1>Vikunja on AWS ECS Fargate</h1>
+
+          <p class="project-intro">
+            A production-style cloud deployment for Vikunja with containerized
+            compute, persistent data, secrets management, monitoring and
+            reproducible infrastructure.
+          </p>
+
+          <div class="project-actions">
+            <a
+              href="https://github.com/A-Marbach/vikunja-aws-fargate"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="primary-link"
+            >
+              View Repository ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="project-stack">
+          <span>AWS</span>
+          <span>Terraform</span>
+          <span>ECS Fargate</span>
+          <span>RDS</span>
+          <span>S3</span>
+          <span>CloudWatch</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="project-summary">
+    <div class="container summary-grid">
+
+      <div class="summary-card">
+        <span class="summary-label">GOAL</span>
+        <h2>Run Vikunja reliably in AWS.</h2>
+        <p>
+          Build a cloud environment where compute, database, files and secrets
+          are separated instead of living inside one container.
+        </p>
+      </div>
+
+      <div class="summary-card">
+        <span class="summary-label">APPROACH</span>
+        <h2>Managed services + Infrastructure as Code.</h2>
+        <p>
+          ECS Fargate runs the application while RDS, S3, Secrets Manager and
+          CloudWatch handle persistence and operations.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="architecture-section">
+    <div class="container">
+
+      <div class="section-heading">
+        <p>Architecture</p>
+        <h2>A simple separation between compute, data and operations.</h2>
+      </div>
+
+      <div class="architecture-board">
+
+        <div class="architecture-main">
+          <div class="arch-box">
+            <small>ENTRY</small>
+            <strong>Internet</strong>
+          </div>
+
+          <span class="arch-line">→</span>
+
+          <div class="arch-box">
+            <small>NETWORK</small>
+            <strong>VPC</strong>
+            <p>Security Groups</p>
+          </div>
+
+          <span class="arch-line">→</span>
+
+          <div class="arch-box arch-box--main">
+            <small>COMPUTE</small>
+            <strong>ECS Fargate</strong>
+            <p>Vikunja Container</p>
+          </div>
+        </div>
+
+        <div class="architecture-services">
+          <div>
+            <small>DATABASE</small>
+            <strong>RDS PostgreSQL</strong>
+          </div>
+
+          <div>
+            <small>FILES</small>
+            <strong>Amazon S3</strong>
+          </div>
+
+          <div>
+            <small>SECRETS</small>
+            <strong>Secrets Manager</strong>
+          </div>
+
+          <div>
+            <small>OBSERVABILITY</small>
+            <strong>CloudWatch</strong>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="decisions-section">
+    <div class="container">
+
+      <div class="section-heading">
+        <p>Key decisions</p>
+        <h2>Why I built it this way.</h2>
+      </div>
+
+      <div class="decision-cards">
+
+        <article>
+          <h3>ECS Fargate</h3>
+          <p>
+            No EC2 host management. The project stays focused on containers,
+            networking and application infrastructure.
+          </p>
+        </article>
+
+        <article>
+          <h3>RDS + S3</h3>
+          <p>
+            Persistent data is separated from disposable ECS tasks, so
+            redeployments do not destroy application state.
+          </p>
+        </article>
+
+        <article>
+          <h3>Terraform</h3>
+          <p>
+            The environment can be recreated and reviewed instead of depending
+            on manual AWS console configuration.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="challenge-section">
+    <div class="container challenge-grid">
+
+      <div>
+        <p class="challenge-label">MAIN CHALLENGE</p>
+
+        <h2>
+          Containers can disappear.
+          The data cannot.
+        </h2>
+      </div>
+
+      <div class="challenge-answer">
+        <p>
+          ECS tasks are replaceable, so application state could not live inside
+          the container.
+        </p>
+
+        <p>
+          I separated persistence from compute using
+          <strong>RDS PostgreSQL</strong> and <strong>S3</strong>.
+          This allowed ECS tasks to restart or be replaced without losing
+          application data.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="result-section">
+    <div class="container result-content">
+
+      <div>
+        <p class="result-label">RESULT</p>
+
+        <h2>Reproducible and recoverable infrastructure.</h2>
+      </div>
+
+      <ul>
+        <li>Terraform-managed AWS infrastructure</li>
+        <li>Persistent database and file storage</li>
+        <li>Secrets kept outside source code</li>
+        <li>CloudWatch logging and monitoring</li>
+        <li>Backup and restore behavior tested</li>
+      </ul>
+
+      <a
+        href="https://github.com/A-Marbach/vikunja-aws-fargate"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="primary-link"
+      >
+        Explore the implementation ↗
+      </a>
+
+    </div>
+  </section>
+
+</main>
